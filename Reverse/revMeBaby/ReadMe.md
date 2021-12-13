@@ -26,7 +26,7 @@ On commence par analyser le binaire avec **GHIDRA**.
 
 Premier réflexe, regarder les chaînes définies, on y cherche un truc ressemblant soit à un flag, soit à un message intéressant.
 
-![Defined string](images/defined_string.png)
+![Defined string](images/defined_string.PNG)
 
 On y découvre celle-ci :
 **"Franchement t'es trop chaud, felicitations, tu peux aller prendre tes points !"**
