@@ -26,7 +26,7 @@ On commence par analyser le binaire avec **GHIDRA**.
 
 Premier réflexe, regarder les chaînes définies, on y cherche un truc ressemblant soit à un flag, soit à un message intéressant.
 
-![Defined string](images/defined_string.png)
+![Defined string](images/defined_string.PNG)
 
 On y découvre celle-ci :
 **"Franchement t'es trop chaud, felicitations, tu peux aller prendre tes points !"**
@@ -65,7 +65,7 @@ undefined8 FUN_001021a2(int param_1)
     uVar3 = 0xffffffff;
   }
   else {
-    // Récupère la première occurance d'un retour à la lign
+    // Récupère la première occurance d'un retour à la ligne
     sVar4 = strcspn(local_218,"\n");
 
     // Transforme ce retour à la ligne en fin de chaîne
@@ -114,7 +114,7 @@ undefined8 read_password(int fd)
 
 {
   char buffer [520];
-  // Lecture d'un fichier où est écrit le password
+  // Lecture d'un input où est écrit le password
   ssize_t count_bytes_read = (int)read(fd,buffer,0x200);
   size_t password_size;
 
