@@ -132,7 +132,7 @@ Un exemple avec celui-là :
 En allant sur **[zxing](https://zxing.org)** on décode le QRCode, ce qui nous donne :
 `otpauth://totp/CYBNCTF?secret=AVANEJ5OLADQ4GG6TQXHGPAJ6KWPFYQ5&algorithm=SHA1&digits=6&period=30`
 
-On apprend que **digits=6** et **period=30*.
+On apprend que **digits=6** et **period=30**.
 
 Maintenant plus qu'à générer le code, pour ça soit on utilise mon script, soit un site tout fait, tout beau, tout propre : **[totp.danhersam](https://totp.danhersam.com)**.
 
