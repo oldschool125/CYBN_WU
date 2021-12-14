@@ -92,7 +92,7 @@ Il faut déjà savoir comment exécuter cette fonction, là c'est un peu tricky 
 
 ## Trouver l'URL
 
-Tout d'abord il faut savoir comment fonction CakePHP, qui est utilisé par ce CMS, heureusement en haut de notre ServerController.php, on a tout une infos : `class ServerController extends AppController`.
+Tout d'abord il faut savoir comment fonctionne CakePHP, qui est utilisé par ce CMS, heureusement en haut de notre ServerController.php, on a une info : `class ServerController extends AppController`.
 
 C'est le début de la quête du Graal, direction **AppController.php**.
 
