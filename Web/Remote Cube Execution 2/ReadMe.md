@@ -250,3 +250,5 @@ On peut être content, on a notre **flag : CYBN{M1necRAfT_R3moTE_Kub_EX3cut1ioN#
 #### COMMING SOON
 
 * Je le ferai plus tard dans la soirée
+
+![Serveur flagged](images/flagged.png)
