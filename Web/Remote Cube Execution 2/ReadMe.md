@@ -247,8 +247,37 @@ On peut être content, on a notre **flag : CYBN{M1necRAfT_R3moTE_Kub_EX3cut1ioN#
 
 ## Solution 2 : Utilisation du CMS
 
-#### COMMING SOON
+L'autre façon de faire pour ceux qui ne sont pas fun, c'est installer le CMS et utiliser son interface. Ici je vais utiliser **WampServer** pour héberger localement le CMS. Vous aurez également besoin de SQL pour vous simplifier la vie.
 
-* Je le ferai plus tard dans la soirée
+On commence par extraire tout le **.zip** du CMS dans le dossier **/www** de Wamp.
+
+![Dossier de WampServer](images/wamp_folder.png)
+
+Une fois le dossier complet, on lance la page web et on installe le CMS en suivant simplement les étapes. On commence par se connecter à la base de données etc...
+
+![Database de MineWeb](images/wamp_bdd.png)
+
+Une fois votre CMS complétement installé, rendez-vous dans la base de données liées pour modifier les données enregistrées. On commence par la table **server**, on ajoute le serveur minecraft avec l'url **`minecraft.cybernight-c.tf`**, le port **`25565`** et le tout en type **`0`**.
+
+![Database de MineWeb](images/CMS_server_table.png)
+
+Ensuite dans la table **configurations** on ajoute la **secretKey** **`Uns3curexM1new3b`**
+
+![Database de MineWeb](images/CMS_configurations_table.png)
+
+Et enfin, direction **le panel administrateur** sur le compte admin que vous avez créé lors de l'installation. On va dans **commandes pré-enregistrées** et l'on ajoute notre commande **`op <username>`**.
+
+![Database de MineWeb](images/CMS_command.png)
+
+On l'envoie et le tour est joué :
+
+![Le serveur nous a donné les droits admin](images/operator.png)
+
+Plus qu'à tenter la commande **`/flag`** sur le serveur :
+
+![Commande /flag acceptée](images/flag.png)
+
+
+## Enjoy
 
 ![Serveur flagged](images/flagged.png)
