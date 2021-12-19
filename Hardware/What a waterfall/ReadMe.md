@@ -37,4 +37,12 @@ On le passe dans **[CyberChef](https://gchq.github.io/CyberChef)** :
 
 ![Spectrogramme du fichier](images/morse2text.png)
 
+> A noter (*merci Alban pour le tips*) :
+> 
+> Le premier caractères : **`-.-.-`** signifie **début de message**
+> 
+> Le dernier caractères : **`...-.`** signifie **tout compris**
+> 
+> cf : [techno-science](https://www.techno-science.net/definition/3815.html)
+
 **Le flag : CYBN{@L0RS_$E_M0R$3!?!?}**
