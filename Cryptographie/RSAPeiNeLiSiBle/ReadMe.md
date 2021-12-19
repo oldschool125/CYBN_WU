@@ -180,7 +180,7 @@ Pour encoder une valeur, on utilise un **triplet TLV** (*Tag-Length-Value*) :
 - Troisième partie, **Value** : les octets suivants définissent la valeur.
 
 > **Exemple 1**
-> 
+>
 > Si je veux coder l'entier 65537 (soit `01 00 01` en hexa), je peux le coder sa valeur sur 3 octets.
 >
 > Ainsi, on écrit d'abord le tag, ici un entier donc le premier octet sera 0x02
@@ -198,7 +198,7 @@ Pour encoder une valeur, on utilise un **triplet TLV** (*Tag-Length-Value*) :
 >
 > On écrit d'abord le tag, ici un entier donc toujours 0x02
 >
-> Ensuite l'octet taille, comme la taille est de 560, c'est est supérieur à 127, il nous faudra 2 octets pour la coder, l'octet de taille servira donc non pas à annoncer la taille directement, mais sur combien d'octet elle va être annoncée, on place donc le bit tout à gauche sur 1, et sur les 7 suivants serviront à dire sur combien : 1000 0010 (0x82 en hexa)
+> Ensuite l'octet taille, comme la taille est de 560, c'est supérieur ou égal à 128, il nous faudra 2 octets pour la coder, l'octet de taille servira donc non pas à annoncer la taille directement, mais sur combien d'octet elle va être annoncée, on place donc le bit tout à gauche sur 1, et sur les 7 suivants serviront à dire sur combien : 1000 0010 (0x82 en hexa)
 >
 > On place nos 2 octets pour annoncer la taille de la valeur : 0x02 0x30 (560 en décimal)
 >
@@ -227,8 +227,8 @@ Si l'on prend notre fichier en hexa, on peut essayer de décoder à la main :
 
 ![Découpage de l'hexadécimal](images/values1.png)
 
-- En rouge, la taille de la clé, on voit 30, c'est donc un objet, ensuite 82 nous indique que les 2 octets suivants définissent la taille de la valeur, et enfin 09 28 nous dit que le fichier fait 2344, et en effet, sans ces 4 octets, c'est bien la taille complète du fichier.
-- En bleu, c'est ce qu'on a vu juste avant, c'est la version, on est en **`version 0`**.
+- En rouge, la taille de la clé, on voit 30, c'est notre **séquence**, ensuite 82 nous indique que les 2 octets suivants définissent la taille de la valeur, et enfin 09 28 nous dit que le fichier fait 2344, et en effet, sans ces 4 octets, c'est bien la taille complète du fichier.
+- En bleu, c'est ce qu'on a vu juste avant, c'est la **version**, on est en **`version 0`**.
 - En vert, c'est le n, codé sur 513 octets mais malheureusement certains sont illisibles...
 - En violet, l'exposant public, **e**, sa valeur est **`65537`**
 - En orange l'exposant privé, **d**, bien plus intéressant et totalement lisible, il est codé sur 512 octets (0x02 0x00)
@@ -251,7 +251,7 @@ p = 2862441917046229042961950758051108202981428592433605299901018212491797284100
 q = 24785285794588935772876957267722756919307544096595999122829484675362080441664148640753194433380728673623252940848806816866511436086486400712292275391091626839390762380511576876277944085610413662884100488402563476676458887597213843520754999909944047092277958517431184590389414535039783787423826334934734593865141848191761224478751883028557596705660307279995042041459630178314513067565435941593925544875883918549371160329836836281119729525856583871502468844249599704107490188737281308695303668038471971328962312203479778371921651836668706029185920510062601649204390766872277681510251860597638803823694087830878985844193
 ```
 
-**Maintenant qu'on a pu identifier le p, q et d, on peut retrouver n qui est illisible**.
+**Maintenant qu'on a pu identifier le p et q, on peut retrouver n qui est illisible**.
 
 Si l'on teste :
 
@@ -265,7 +265,7 @@ print(hex(p*q)[2:])
 Output: ade74c3868f71acdacdcfcb2c41edf1a9a6304de0a4a91121fc5e57be536cd30d4b7bbdd668f5cad278b2499d413b1e0bc9efc41c30c68b5febf22d2a152e637c82b1a5b1378482861776c8ba9aa1e19c8b05eae743f2afb5ae18748f181bd94404062d3d3ade99747be10ff15f7f1555e77a9c7275a150caf7589b6644026b0c394b086b5ca27bc667752b556fd72e074990c11f8a6b8f4de58ef219a66d33460f633fff2e3c67b7b2ec8b303a400d14c668adeff972504ae41cb4c75a54d3f8478d6b2997100672004cf0a8fdb6fc2e55730e46177853cf2754248858b7be274a5bc61d28097c619f8a2575e142a6de1d6290e29867ad45db76225fdf940b412343904a43bc134624a3c4dc618eda10b16f29447cfc628884da9065bba603abd7f639a489321d6e6e5200a75c5728ed65e8295f48b5a618f912c6ce57cab6463305268f0377a4fb7009e3091842e6aef2083b809a5687b546fe2dacf9354813b8369e251eae588f0234e56c48bfa03948269bd48a772428c8b223ca4bf2590a2cafdfd976a69aff66cf260b016de26f8d8fe4918887f3f6fc4518055a640d3773a739f3036048d509739d0d4219bbe6a40e0e12fc66f11e1d3691b6e3dda1aa0d725382de76675c463b9da2c4dce20edefd50847247bfef95448136e5a9a3cbe4a048d00bdf6963363b1e6471b21e60f0224f883156f370550b87289a0255f
 ```
 
-Ca commence par **`ad e7 4c 38`**, tout comme la valeur de l'entier en vert sur notre image de tout à l'heure, ça semble correct.
+Ca commence par **`ad e7 4c 38`**, tout comme la valeur de l'entier en vert sur notre image de tout à l'heure, **ça semble correct**.
 
 ## Déchiffrement du fichier
 
