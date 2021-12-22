@@ -47,12 +47,12 @@ undefined8 FUN_001021a2(int param_1)
   ssize_t sVar2;
   undefined8 uVar3;
   size_t sVar4;
-  char local_218 [520];     // buffer de 520 char
+  char local_218 [512];     // buffer de 520 char
   uint local_10;
   int local_c;
 
-  // Lecture du paramètre, on se doute que param_1 est donc un file descriptor (fd)
-  // On lit les 200 premiers char du fd
+  // Lecture du paramètre, on se doute que param_1 est donc un file descriptor (fd, dans le contexte il s'agit en fait d'un socket)
+  // On lit les 512 premiers char du fd
   sVar2 = read(param_1,local_218,0x200);
   local_c = (int)sVar2;
   if (local_c < 0) {
@@ -60,7 +60,7 @@ undefined8 FUN_001021a2(int param_1)
                     /* WARNING: Subroutine does not return */
     exit(1);
   }
-  // Si la taille de la chaîne récupérée est égale à 0, on est éjecté.
+  // Si la taille de la chaîne récupérée est égale à 0, le message a été reçu, sortie de la fonction.
   if (local_c == 0) {
     uVar3 = 0xffffffff;
   }
@@ -113,8 +113,8 @@ Pour simplifier les explications, j'ai directement commenté le code décompilé
 undefined8 read_password(int fd)
 
 {
-  char buffer [520];
-  // Lecture d'un input où est écrit le password
+  char buffer [512];
+  // Lecture du message du client socket
   ssize_t count_bytes_read = (int)read(fd,buffer,0x200);
   size_t password_size;
 
